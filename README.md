@@ -33,3 +33,4 @@ The REST API provides server endpoints:
 ## TODO:
 - rabbitmq
 - seeding db
+- docs in code, types
