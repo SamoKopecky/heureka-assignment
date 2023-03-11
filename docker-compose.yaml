@@ -10,3 +10,12 @@ services:
     ports:
       - "5432:5432"
 
+  api:
+    build:
+      context: .
+    environment:
+      PASSWD: secret
+      DB_ADDR: db
+      DB_PORT: 5432
+    ports:
+      - "5001:5001"

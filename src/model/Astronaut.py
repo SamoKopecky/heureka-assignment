@@ -1,9 +1,17 @@
+import os
+
+from dotenv import load_dotenv
 from peewee import PostgresqlDatabase, Model, CharField, IntegerField
 
 
 def get_db() -> PostgresqlDatabase:
+    load_dotenv()
     return PostgresqlDatabase(
-        "astronaut", user="postgres", password="secret", host="127.0.0.1", port=5432
+        "astronaut",
+        user="postgres",
+        password=os.getenv("PASSWD"),
+        host=os.getenv("DB_ADDR"),
+        port=os.getenv("DB_PORT"),
     )
 
 
