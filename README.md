@@ -10,7 +10,7 @@ To run this app use `docker-compose`:
 docker-compose up -d --build
 ```
 
-For development, you can run the API server locally, however make sure you have a postgres db running on `localhost:5432`, with credentials `postgres:secret`
+For development, you can run the API server locally, however make sure you have a postgres db running on `localhost:5432`, with credentials `postgres:secret`. If you have different setup create an `.env` file from the `.env.example` file.
 ```shell
 pip install -r requirements.txt && \
 python3 main.py
@@ -32,5 +32,4 @@ The REST API provides server endpoints:
 
 ## TODO:
 - rabbitmq
-- seeding db
 - docs in code, types

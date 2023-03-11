@@ -1,4 +1,5 @@
 from peewee import PostgresqlDatabase
+
 from ..model.Astronaut import get_db, Astronaut
 
 

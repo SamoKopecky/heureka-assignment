@@ -1,8 +1,7 @@
-from flask import jsonify
+from playhouse.shortcuts import model_to_dict
 
 from .db import Db
 from ..model.Astronaut import Astronaut
-from playhouse.shortcuts import model_to_dict
 
 
 def create(data):

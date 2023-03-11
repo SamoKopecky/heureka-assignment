@@ -1,6 +1,5 @@
 from src.api.routes import app
 
-# from src.controller.db import create
 from src.controller.db import Db
 
 
