@@ -1,8 +1,7 @@
-# Use postgres/example user/password credentials
 version: '3.1'
 
 services:
-  db:
+  postgres:
     image: postgres:14
     restart: always
     environment:
@@ -16,9 +15,7 @@ services:
     command:
       - "--api"
     environment:
-      DB_PASSWD: secret
-      DB_ADDR: db
-      DB_PORT: 5432
+      DB_ADDR: postgres
     ports:
       - "5001:5001"
 
@@ -33,10 +30,5 @@ services:
     command:
       - "--consumer"
     environment:
-      DB_PASSWD: secret
-      DB_ADDR: db
-      DB_PORT: 5432
-      RABBITMQ_PASSWD: guest
-      RABBITMQ_USER: guest
+      DB_ADDR: postgres
       RABBITMQ_ADDR: rabbitmq
-      RABBITMQ_PORT: 5672

@@ -10,11 +10,15 @@ To run this app use `docker-compose`:
 docker-compose up -d --build
 ```
 
-For development, you can run the API server locally, however make sure you have a postgres db running on `localhost:5432`, with credentials `postgres:secret`. If you have different setup create an `.env` file from the `.env.example` file.
+For development, you can run the components locally. First make sure you install dependencies with:
 ```shell
-pip install -r requirements.txt && \
-python3 main.py
+pip install -r requirements.txt
 ```
+If you components like the database not hosted on localhost  create an `.env` file from the `.env.example` file. For more help with running individual components, see
+```shell
+python3 main.py --help
+```
+
 
 ## REST API
 The REST API provides server endpoints:
@@ -28,11 +32,47 @@ The REST API provides server endpoints:
 
 ## Seeding the database
 
+See `README.md` in the `generator` folder.
+
 ## Exporting/Importing the database
+
+To export the database to a file
+- with a docker container:
+  ```shell
+  docker build -t manager . && \
+  docker run --network="host" --name="producer" manager -pe && \
+  docker cp producer:/src/export.json . && \
+  docker rm producer
+  ```
+  The exported file will be in the current directory with the name `export.json`. If you want to save the file to a different location, edit the 3rd line in the command above like this:
+  ```shell
+  docker cp producer:/src/export.json {file_path}
+  ```
+- without a docker container:
+  ```shell
+  python3 main.py -pe -fp {file_path}
+  ```
+
+To import a file to the database
+- with a docker container:
+  ```shell
+  docker build -t manager . && \
+  docker container create --rm --name producer --network="host" manager -pi && \
+  docker cp export.json producer:/src/export.json && \
+  docker start producer
+  ```
+  The import file needs to be in the current directory, if you want to specify a different file, edit the 2nd command like this:
+  ```shell
+  docker cp {file_path} producer:/src/export.json
+  ```
+- without a docker container:
+  ```shell
+  python3 main.py -pi -fp {file_path}
+  ```
+
+If the address of your db/rabbitmq containers are not localhost, change them using `env` variables. List of available `env` variables can be seen in `./Dockerfile`.
 
 ## TODO:
 - docs in code, types
-- setup script
 - test deployment
-- finish TODO
 - clean up manager

@@ -16,26 +16,21 @@ def parse_args():
         "-c",
         "--consumer",
         action="store_true",
-        default=False,
         help="run as consumer for db management",
     )
     options.add_argument(
         "-pi",
         "--producer-import",
         action="store_true",
-        default=False,
         help="run as a producer, send the command to import the db",
     )
     options.add_argument(
         "-pe",
         "--producer-export",
         action="store_true",
-        default=False,
         help="run as a producer, send the command to export the db",
     )
-    options.add_argument(
-        "-a", "--api", action="store_true", default=False, help="run the rest api"
-    )
+    options.add_argument("-a", "--api", action="store_true", help="run the rest api")
     parser.add_argument(
         "-fp",
         "--file-path",
