@@ -14,7 +14,7 @@ For development, you can run the components locally. First make sure you install
 ```shell
 pip install -r requirements.txt
 ```
-If you components like the database not hosted on localhost  create an `.env` file from the `.env.example` file. For more help with running individual components, see
+If your components like the database are not hosted on `localhost` create an `.env` file from the `.env.example` file. For more help with running individual components, see
 ```shell
 python3 main.py --help
 ```
@@ -61,7 +61,7 @@ To import a file to the database
   docker cp export.json producer:/src/export.json && \
   docker start producer
   ```
-  The import file needs to be in the current directory, if you want to specify a different file, edit the 2nd command like this:
+  The import file needs to be in the current directory and be named `export.json`, if you want to specify a different file, edit the 2nd command like this:
   ```shell
   docker cp {file_path} producer:/src/export.json
   ```
