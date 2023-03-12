@@ -24,7 +24,10 @@ def read_astronauts():
 
 @app.route(f"/{astronauts}/<int:read_id>")
 def read_astronaut(read_id):
-    return read_by_id(read_id)
+    astronaut = read_by_id(read_id)
+    if astronaut == {}:
+        return {"error": "record not found"}, 404
+    return astronaut
 
 
 @app.route(f"/{astronauts}/create", methods=["POST"])
@@ -41,7 +44,7 @@ def create_astronaut():
 def delete_astronaut(delete_id):
     if delete_by_id(delete_id):
         return {"deleted": delete_id}
-    return {"deleted": None}, 410
+    return {"error": "record not found"}, 404
 
 
 @app.route(f"/{astronauts}/delete", methods=["DELETE"])

@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.10-slim
 WORKDIR generator
 
 ENV API_ADDR="http://localhost"

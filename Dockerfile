@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.10-slim
 WORKDIR src
 
 ENV DB_PASSWD=secret
@@ -11,7 +11,8 @@ ENV RABBITMQ_PORT=5672
 
 COPY requirements.txt .
 
-RUN apt install -y libpq-dev
+RUN apt update && \
+    apt install -y gcc libpq-dev
 RUN pip install -r requirements.txt
 
 COPY . .

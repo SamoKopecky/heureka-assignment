@@ -2,6 +2,7 @@ from typing import List, Dict
 
 from playhouse.shortcuts import model_to_dict
 
+import src.model.Astronaut
 from ..model.Astronaut import Astronaut
 from ..model.db import Db
 
@@ -20,7 +21,11 @@ def read_all() -> List[Dict]:
 
 
 def read_by_id(read_id: int) -> Dict:
-    return model_to_dict(Astronaut.get_by_id(read_id))
+    try:
+        return model_to_dict(Astronaut.get_by_id(read_id))
+    except Exception as e:
+        if "does not exist" in e.args[0]:
+            return {}
 
 
 def read_with_limit(records: str) -> List[Dict]:

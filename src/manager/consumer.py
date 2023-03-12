@@ -20,7 +20,6 @@ def command_callback(ch, method, properties, body):
             routing_key="export",
             body=json.dumps(data),
         )
-    # Maybe these are not even required?
     elif body == b"import":
         logging.info("Importing db...")
         ch.queue_declare(queue="import")
