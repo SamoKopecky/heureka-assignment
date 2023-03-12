@@ -18,7 +18,7 @@ def main(number_of_rows):
     firstnames = []
     surnames = []
     nationalities = []
-    sexes = ["male", "female"]
+    genders = ["male", "female"]
 
     for row in names_rows:
         firstnames.append(row["firstname"])
@@ -32,7 +32,7 @@ def main(number_of_rows):
             {
                 "first_name": random.choice(firstnames),
                 "last_name": random.choice(surnames),
-                "sex": random.choice(sexes),
+                "gender": random.choice(genders),
                 "year_of_birth": random.randint(1900, 1999),
                 "nationality": random.choice(nationalities),
             }

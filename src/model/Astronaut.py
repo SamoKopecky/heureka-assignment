@@ -23,6 +23,6 @@ class BaseModel(Model):
 class Astronaut(BaseModel):
     last_name = CharField()
     first_name = CharField()
-    sex = CharField()
+    gender = CharField()
     year_of_birth = IntegerField()
     nationality = CharField()

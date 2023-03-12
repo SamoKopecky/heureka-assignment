@@ -19,8 +19,17 @@ If your components like the database are not hosted on `localhost` create an `.e
 python3 main.py --help
 ```
 
+## Database model
+
+The database has one table named astronauts with rows:
+- `first_name`
+- `second_name`
+- `gender` -- either female or male
+- `year_of_birth`
+- `nationality`
 
 ## REST API
+
 The REST API provides server endpoints:
 - `/astronauts` -- Get all astronauts
   - `/astronauts?limit=20` -- Optionally you can provide the parameter `limit` to limit the number of astronauts, in this case the astronauts are sorted in descending order by their year of birth, example:
