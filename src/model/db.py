@@ -38,5 +38,3 @@ class Db:
         if not Astronaut.table_exists():
             self.pgdb.create_tables([Astronaut])
             return
-        # Check if all columns are the same
-        columns = self.pgdb.get_columns("astronaut")

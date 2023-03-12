@@ -1,10 +1,12 @@
+from typing import List, Dict
+
 from playhouse.shortcuts import model_to_dict
 
-from ..model.db import Db
 from ..model.Astronaut import Astronaut
+from ..model.db import Db
 
 
-def create(data):
+def create(data: Dict) -> int:
     bulk_size = 100
     with Db() as db:
         with db.pgdb.atomic():
@@ -13,15 +15,15 @@ def create(data):
     return len(data)
 
 
-def read_all():
+def read_all() -> List[Dict]:
     return [astronaut for astronaut in Astronaut.select().dicts()]
 
 
-def read_by_id(read_id):
+def read_by_id(read_id: int) -> Dict:
     return model_to_dict(Astronaut.get_by_id(read_id))
 
 
-def read_with_limit(records):
+def read_with_limit(records: str) -> List[Dict]:
     return [
         author
         for author in Astronaut.select()
@@ -31,18 +33,18 @@ def read_with_limit(records):
     ]
 
 
-def delete_by_id(to_delete_id):
+def delete_by_id(to_delete_id: int) -> bool:
     query = Astronaut.delete().where(Astronaut.id == to_delete_id)
     if query.execute() != 0:
         return True
     return False
 
 
-def delete_all():
+def delete_all() -> int:
     query = Astronaut.delete()
     return query.execute()
 
 
-def update_by_id(update_id, data):
+def update_by_id(update_id: int, data: Dict):
     query = Astronaut.update(data).where(Astronaut.id == update_id)
-    return query.execute()
+    query.execute()

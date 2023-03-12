@@ -71,8 +71,3 @@ To import a file to the database
   ```
 
 If the address of your db/rabbitmq containers are not localhost, change them using `env` variables. List of available `env` variables can be seen in `./Dockerfile`.
-
-## TODO:
-- docs in code, types
-- test deployment
-- clean up manager

@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 from .utils import get_connection
 
 
@@ -36,11 +38,11 @@ def send_commands(export, file_path):
         )
 
 
-def load_from_file(file_path):
+def load_from_file(file_path: str) -> bytes:
     with open(file_path, "rb") as file:
         return file.read()
 
 
-def save_to_file(data, file_path):
+def save_to_file(data: bytes, file_path: str):
     with open(file_path, "wb") as file:
         file.write(data)

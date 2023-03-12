@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from peewee import PostgresqlDatabase, Model, CharField, IntegerField
 
 
-def get_db(db) -> PostgresqlDatabase:
+def get_db(db: str) -> PostgresqlDatabase:
     load_dotenv(override=False)
     return PostgresqlDatabase(
         db,
