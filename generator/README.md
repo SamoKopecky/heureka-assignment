@@ -13,7 +13,7 @@ docker run --network="host" --rm generator
 To specify `n` rows, use:
 ```shell
 docker build -t generator . && \
-docker run --network="host" --rm generator 2000
+docker run --network="host" --rm generator n
 ```
 
 To a different location for the API change `env` variables:

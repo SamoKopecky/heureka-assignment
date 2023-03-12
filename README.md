@@ -23,7 +23,7 @@ python3 main.py --help
 
 The database has one table named astronauts with rows:
 - `first_name`
-- `second_name`
+- `last_name`
 - `gender` -- either female or male
 - `year_of_birth`
 - `nationality`
