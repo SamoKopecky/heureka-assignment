@@ -4,12 +4,12 @@ from dotenv import load_dotenv
 from peewee import PostgresqlDatabase, Model, CharField, IntegerField
 
 
-def get_db() -> PostgresqlDatabase:
-    load_dotenv()
+def get_db(db) -> PostgresqlDatabase:
+    load_dotenv(override=False)
     return PostgresqlDatabase(
-        "astronaut",
+        db,
         user="postgres",
-        password=os.getenv("PASSWD"),
+        password=os.getenv("DB_PASSWD"),
         host=os.getenv("DB_ADDR"),
         port=os.getenv("DB_PORT"),
     )
@@ -17,7 +17,7 @@ def get_db() -> PostgresqlDatabase:
 
 class BaseModel(Model):
     class Meta:
-        database = get_db()
+        database = get_db("astronaut")
 
 
 class Astronaut(BaseModel):

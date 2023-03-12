@@ -1,0 +1,5 @@
+.env
+.env.example
+.git
+.pre-commit-config.yaml
+.venv

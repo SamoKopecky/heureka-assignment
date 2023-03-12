@@ -31,5 +31,8 @@ The REST API provides server endpoints:
 ## Exporting/Importing the database
 
 ## TODO:
-- rabbitmq
 - docs in code, types
+- setup script
+- test deployment
+- finish TODO
+- clean up manager

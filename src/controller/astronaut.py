@@ -1,6 +1,6 @@
 from playhouse.shortcuts import model_to_dict
 
-from .db import Db
+from ..model.db import Db
 from ..model.Astronaut import Astronaut
 
 

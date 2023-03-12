@@ -13,9 +13,30 @@ services:
   api:
     build:
       context: .
+    command:
+      - "--api"
     environment:
-      PASSWD: secret
+      DB_PASSWD: secret
       DB_ADDR: db
       DB_PORT: 5432
     ports:
       - "5001:5001"
+
+  rabbitmq:
+    image: rabbitmq:3
+    ports:
+      - "5672:5672"
+
+  db_manager:
+    build:
+      context: .
+    command:
+      - "--consumer"
+    environment:
+      DB_PASSWD: secret
+      DB_ADDR: db
+      DB_PORT: 5432
+      RABBITMQ_PASSWD: guest
+      RABBITMQ_USER: guest
+      RABBITMQ_ADDR: rabbitmq
+      RABBITMQ_PORT: 5672
